@@ -25,6 +25,7 @@ public class User {
     private String username;
 
     private String password;
+
     @Convert(converter = JobConverter.class)
     private JobEm job;
 
