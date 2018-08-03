@@ -1,7 +1,9 @@
 package com.example.demo.web;
 
 import com.example.demo.dao.UserRep;
+import com.example.demo.em.JobEm;
 import com.example.demo.em.User;
+import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +20,8 @@ import org.springframework.web.bind.annotation.*;
 public class UserResource {
     @Autowired
     private UserRep userRep;
+    @Autowired
+    private UserService userService;
 
     @PutMapping("save")
     public User test(@RequestBody User user){
@@ -30,5 +34,15 @@ public class UserResource {
     @GetMapping("find/{id}")
     public User test2(@PathVariable("id") Integer id){
         return userRep.findById(id).get();
+    }
+
+    @GetMapping("cache")
+    public User cache(){
+        return  userService.findOne(1);
+    }
+    @GetMapping("out")
+    public User out(){
+        User user = new User(1, "sdf", "3333", JobEm.PRESIDENT);
+        return userService.add(user);
     }
 }
