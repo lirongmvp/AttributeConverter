@@ -8,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.Spy;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -20,7 +19,7 @@ import java.util.Optional;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class UserServiceTest {
-    @Spy
+//    @Spy
     @InjectMocks
     private UserService userService;
     @Mock
@@ -32,7 +31,7 @@ public class UserServiceTest {
 
     @Test
     public void findOne() throws Exception {
-        Mockito.when(userRep.findById(Mockito.any())).thenReturn(Optional.of(new User(1,"sdf","q")));
+        Mockito.when(userRep.findById(1)).thenReturn(Optional.of(new User(1,"sdf","q")));
         User one = userService.findOne(1);
         System.out.println(one);
         userService.findOne(1);

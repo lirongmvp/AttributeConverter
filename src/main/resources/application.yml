@@ -10,6 +10,6 @@ spring:
     database: 1
   cache:
     cache-names: user
-    type: redis
+    type: ehcache
 #    ehcache:
 #      config: classpath:ehcache.xml
