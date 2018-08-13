@@ -11,5 +11,11 @@ spring:
   cache:
     cache-names: user
     type: ehcache
+
+
+test:
+  name: li
+
+
 #    ehcache:
 #      config: classpath:ehcache.xml

@@ -1,5 +1,6 @@
 package com.example.demo.web;
 
+import com.example.demo.config.TestConfig;
 import com.example.demo.dao.UserRep;
 import com.example.demo.em.JobEm;
 import com.example.demo.em.User;
@@ -22,6 +23,8 @@ public class UserResource {
     private UserRep userRep;
     @Autowired
     private UserService userService;
+    @Autowired
+    private TestConfig testConfig;
 
     @PutMapping("save")
     public User test(@RequestBody User user){
@@ -44,5 +47,10 @@ public class UserResource {
     public User out(){
         User user = new User(1, "sdf", "3333", JobEm.PRESIDENT);
         return userService.add(user);
+    }
+    @GetMapping("test")
+    public String test(){
+
+        return testConfig.getName();
     }
 }
